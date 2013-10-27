@@ -23,6 +23,13 @@
 #include <util/delay.h>
 #include <stdlib.h>
 
+#ifdef __AVR_ATtiny85__
+ #include <TinyWireM.h>
+ #define Wire TinyWireM
+#else
+ #include <Wire.h>
+#endif
+
 #include "Adafruit_TSL2561.h"
 
 /*========================================================================*/
