@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_TSL2561.h>
+#include <Adafruit_TSL2561_U.h>
 
 /* This driver uses the Adafruit unified sensor library (Adafruit_Sensor),
    which provides a common 'type' for sensor data and some helper functions.
@@ -35,7 +35,7 @@
    2013/JAN/31  - First version (KTOWN)
 */
    
-Adafruit_TSL2561 tsl = Adafruit_TSL2561(TSL2561_ADDR_FLOAT, 12345);
+Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
 
 /**************************************************************************/
 /*
