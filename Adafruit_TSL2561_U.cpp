@@ -19,8 +19,12 @@
     v1.0 - First release (previously TSL2561)
 */
 /**************************************************************************/
+#if defined(__AVR__)
 #include <avr/pgmspace.h>
 #include <util/delay.h>
+#else
+#include "pgmspace.h"
+#endif
 #include <stdlib.h>
 
 #ifdef __AVR_ATtiny85__
@@ -220,7 +224,7 @@ boolean Adafruit_TSL2561_Unified::begin(void)
             data from the sensor
 */
 /**************************************************************************/
-void Adafruit_TSL2561_Unified::enableAutoGain(bool enable)
+void Adafruit_TSL2561_Unified::enableAutoRange(bool enable)
 {
    _tsl2561AutoGain = enable ? true : false;
 }
@@ -487,7 +491,7 @@ void Adafruit_TSL2561_Unified::getEvent(sensors_event_t *event)
   event->version   = sizeof(sensors_event_t);
   event->sensor_id = _tsl2561SensorID;
   event->type      = SENSOR_TYPE_LIGHT;
-  event->timestamp = 0;
+  event->timestamp = millis();
 
   /* Calculate the actual lux value */
   getLuminosity(&broadband, &ir);
